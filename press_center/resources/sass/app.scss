@@ -1,0 +1,245 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+@import 'node_modules/font-awesome/scss/font-awesome';
+.main-nav nav
+{
+    overflow: hidden;
+}
+.main-nav nav > ul
+{
+    float: left;
+}
+.main-nav ul:nth-child(2) li:first-child a
+{
+    border-color: #cccccc;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    padding-right: 0;
+}
+.main-nav li
+{
+    display: inline-block;
+    padding: 10px 0;
+}
+.main-nav li ins
+{
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+.main-nav li ins a
+{
+    color: #737373;
+    display: block;
+    -moz-transition: background-color 0.2s linear;
+    o-transition: background-color 0.2s linear;
+    padding: 3px 20px;
+    text-decoration: none;
+    transition: background-color 0.2s linear;
+    -webkit-transition: background-color 0.2s linear;
+}
+.main-nav li ins a span
+{
+    background-image: url("../../images/border-bot.jpg");
+    background-position: 0 95%;
+    background-repeat: repeat-x;
+    background-size: 1px 1px;
+}
+.main-nav li ins a span:hover
+{
+    background-image: none;
+}
+.main-nav li ins a:hover
+{
+    text-decoration: none;
+}
+.main-nav .nav-right
+{
+    float: right;
+}
+.main-nav .nav-right li:last-child a
+{
+    padding: 3px 0 3px 5px;
+}
+.main-nav .nav-right a
+{
+    border: 0;
+}
+.main-nav .glasses
+{
+    padding: 10px 10px 0 0;
+}
+.main-nav .glasses a
+{
+    border: 0;
+    display: block;
+    height: 12px;
+    padding: 0 !important;
+    position: relative;
+    top: 3px;
+    width: 17px;
+}
+.main-nav .territorial-btn
+{
+    padding: 0;
+}
+.main-nav .territorial-btn.hover
+{
+    background: #383d4e;
+}
+.main-nav .territorial-btn.hover .territorial-btn-title
+{
+    color: #ffffff;
+}
+.main-nav .territorial-btn.hover .territorial-btn-title:after
+{
+    height: 4px;
+    right: 20px;
+    width: 7px;
+}
+.main-nav .territorial-btn.hover .territorial-btn-title span
+{
+    border-bottom: 1px solid transparent;
+}
+.main-nav .territorial-btn .territorial-btn-title
+{
+    color: #575757;
+    display: block;
+    line-height: 14px;
+    padding: 16px 35px 16px 70px;
+    position: relative;
+    text-decoration: none;
+}
+.main-nav .territorial-btn .territorial-btn-title span
+{
+    border-bottom: 1px dashed #cbcbcb;
+}
+.main-nav .territorial-btn .territorial-btn-title:hover span
+{
+    border-bottom: 1px solid transparent;
+}
+.main-nav .territorial-btn .territorial-btn-title:before
+{
+    content: "";
+    height: 27px;
+    left: 13px;
+    position: absolute;
+    top: 8px;
+    width: 68px;
+}
+.main-nav .territorial-btn .territorial-btn-title:after
+{
+    content: "";
+    height: 6px;
+    position: absolute;
+    right: 18px;
+    top: 22px;
+    width: 10px;
+}
+.city-dropdown-b
+{
+    background: #383d4e;
+    display: none;
+    height: auto;
+    padding: 25px 10px 25px 20px;
+    position: absolute;
+    top: 46px;
+    z-index: 100;
+}
+.city-dropdown-b .city-list, .city-dropdown-b .info-b
+{
+    display: inline-block;
+    margin-top: 0;
+    vertical-align: top;
+    width: 48%;
+}
+.city-list
+{
+    font-size: 14px;
+    height: 430px;
+    outline: none;
+    overflow: hidden;
+    width: 240px;
+}
+.city-list li
+{
+    display: block;
+    padding: 5px 0;
+    width: 80%;
+}
+.city-list:first-child a
+{
+    padding: 0 !important;
+}
+.city-list a
+{
+    color: #ffffff;
+    -moz-transition: all 0.1s linear;
+    o-transition: all 0.1s linear;
+    text-decoration: none;
+    transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+}
+.city-list a:hover
+{
+    color: #e5e0cd;
+}
+*{
+ margin:0;
+    padding:0;
+}
+ul li{
+    list-style: none;
+}
+.main-nav .territorial-btn .territorial-btn-title:after
+{
+    background-position: -239px 0;
+    content: "";
+    height: 6px;
+    position: absolute;
+    right: 18px;
+    top: 22px;
+    width: 10px;
+}
+.wrap {
+    margin: 0 auto;
+    max-width: 1170px;
+    padding: 0 20px;
+}
+.city-dropdown-b__overlay {
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+.city-dropdown-b {
+    background: #383d4e;
+    display: none;
+    height: auto;
+    padding: 25px 10px 25px 20px;
+    position: absolute;
+    top: 46px;
+    z-index: 100;
+}
+.main-nav {
+    background: #f3f3f3;
+    border-bottom: 1px solid #c7c7c7;
+    font-size: 13px;
+    line-height: 20px;
+}
+header, nav, section, article, aside, footer, fieldset {
+    display: block;
+}
+.main-nav li {
+    display: inline-block;
+    padding: 10px 0;
+}
