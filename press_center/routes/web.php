@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 App::setLocale('ru');
-Route::get('/', [PageController::class, 'index']);
-Route::get('/news', [PageController::class, 'news']);
+Route::get('/', [PageController::class, 'index'])->name("index");
+Route::get('/news', [PageController::class, 'news'])->name('news');
 
 
 Route::middleware('auth')->group(function () {
