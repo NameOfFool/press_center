@@ -4,7 +4,7 @@
             <div class="card-header">{{__("Profile Information")}}</div>
             <div class="card-body">
                 <div class=" mb-4 mb-xl-0 mx-auto">
-                    <form class="text-center d-flex flex-column w-25 mx-auto gap-2">
+                    <div class="text-center d-flex flex-column w-25 mx-auto gap-2">
                         <img class=" rounded-circle mb-2 w-50 mx-auto"
                              src="
                              @if(isset($user->photo))
@@ -12,10 +12,9 @@
                         @else
                             {{url("image/users/guest.png")}}" alt="">
                         @endif
-                        <input type="file"/>
-                        <!-- Profile picture upload button-->
-                        <button class="btn btn-primary" type="button">{{__("Upload new image")}}</button>
-                    </form>
+
+                        <a href="{{route('upload')}}" class="btn btn-primary" data-mdb-riddle-duration="0" type="button">{{__("Upload new image")}}</a>
+                    </div>
                 </div>
                 <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
                     @csrf

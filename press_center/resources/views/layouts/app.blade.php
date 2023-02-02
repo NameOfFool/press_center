@@ -5,6 +5,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="jquery.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Пресс центр налоговой грамотности</title>
@@ -100,20 +101,24 @@
                                     data-mdb-toggle="dropdown"
                                     aria-expanded="false"
                                 >
-                                    <img
-                                        src="{{url("image/users/".Auth::user()->photo)}}"
-                                        class="rounded-0"
-                                        height="25"
-                                        alt="Black and White Portrait of a Man"
-                                        loading="lazy"
-                                    />
+                                    @if(isset(Auth::user()->photo))
+                                        <img src="{{url("image/users/".Auth::user()->photo)}}" alt="" class="rounded-0"
+                                             height="25"
+                                             alt="Black and White Portrait of a Man"
+                                             loading="lazy">
+                                    @else
+                                        <img src="{{url("image/users/guest.png")}}" alt="" class="rounded-0"
+                                             height="25"
+                                             alt="Black and White Portrait of a Man"
+                                             loading="lazy">
+                                    @endif
                                 </a>
                                 <ul
                                     class="dropdown-menu dropdown-menu-end"
                                     aria-labelledby="navbarDropdownMenuAvatar"
                                 >
                                     <li>
-                                        <a class="dropdown-item" href="{{route('profile.edit')}}">Профиль</a>
+                                        <a class="dropdown-item" href="{{route('profile.edit')}}">{{Auth::user()->name}}</a>
                                     </li>
                                     <li>
                                       <form method="POST" action="{{route('logout') }}">

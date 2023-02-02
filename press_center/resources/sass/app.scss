@@ -1,8 +1,9 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
-
+@import "mdb-ui-kit/src/scss/mdb.free";
 // Variables
 @import 'variables';
+@import 'node_modules/cropperjs/src/index';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
