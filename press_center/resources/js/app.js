@@ -1,7 +1,6 @@
 import './bootstrap';
-
+import './tree';
+import './jquery.min'
 import Alpine from 'alpinejs';
-import Cropper from "cropperjs";
-window.Cropper = Cropper;
 window.Alpine = Alpine;
 Alpine.start();

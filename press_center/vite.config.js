@@ -12,9 +12,5 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-    ],
-    resolve: [{
-            '$': 'jQuery'
-        }
     ]
 });

@@ -2,14 +2,12 @@
 @section('content')
     <div class="container">
         <div class="form-group {{ $errors->has('parent_id') ? 'has-error' : '' }}">
-            <label>Category:</label>
-            <br>
-            <br>
-            <br>
+            <h3>{{__("Category")}}:</h3>
             <ul id="tree1">
+
                 @foreach($categories as $category)
                     <li> <input type="radio"  id="parent_id" name="parent_id" value="{{ $category->id }}">
-                        <label for="parent_id"> {{ $category->title }}</label><br>
+                        <label for="parent_id"> {{ $category->name }}</label><br>
                     </li>
                     @if(count($category->childs))
                         @include('admin.categories.sub_category',['childs' => $category->childs])

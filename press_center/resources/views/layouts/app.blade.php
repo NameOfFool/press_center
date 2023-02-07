@@ -5,7 +5,6 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="{{public_path()}}/jquery.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Пресс центр налоговой грамотности</title>
@@ -18,7 +17,7 @@
 <body>
 @include('layouts.territorial')
 @section('header')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid justify-content-between">
             <!-- Left elements -->
             <div class="d-flex">

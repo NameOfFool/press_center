@@ -1,10 +1,12 @@
 import _ from 'lodash';
 window._ = _;
-import '@popperjs/core/dist/umd/popper';
+import Popper from '@popperjs/core/dist/umd/popper';
 import 'mdb-ui-kit/js/mdb.min'
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap';
-
+window.Popper = Popper
+import Cropper from "cropperjs";
+window.Cropper = Cropper;
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
