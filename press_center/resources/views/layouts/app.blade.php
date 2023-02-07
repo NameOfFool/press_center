@@ -5,7 +5,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="jquery.js"></script>
+    <script src="{{public_path()}}/jquery.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Пресс центр налоговой грамотности</title>
@@ -39,7 +39,7 @@
 
                 <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a class="navbar-brand" href="{{route  ('index')}}">Пресс-центр налоговой грамотности</a>
+                    <a class="navbar-brand nav-link" href="{{route  ('index')}}">Пресс-центр налоговой грамотности</a>
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -68,7 +68,7 @@
             <!-- Right elements -->
             <ul class="navbar-nav flex-row">
                 <li class="nav-item me-3 me-lg-1">
-                    <form class="input-group rouded">
+                    <form class="input-group rounded">
                         <input
                             autocomplete="off"
                             type="search"
@@ -94,7 +94,7 @@
                             </ul>
                             @else
                                 <!-- Меню пользователя-->
-                                <div class="dropdown">
+                                <div class="dropdown align-middle my-1">
                                     <a
                                         class="dropdown-toggle d-flex align-items-center hidden-arrow"
                                         href="#"
@@ -105,7 +105,8 @@
                                     >
                                         @if(isset(Auth::user()->photo))
                                             <img src="{{url("image/users/".Auth::user()->photo)}}"
-                                                 class="w-25 rounded-circle"
+                                                 class="rounded-circle border border-2 border-"
+                                                 height="30"
                                                  alt="Black and White Portrait of a Man"
                                             >
                                         @else
@@ -123,6 +124,11 @@
                                             <a class="dropdown-item"
                                                href="{{route('profile.edit')}}">{{Auth::user()->name}}</a>
                                         </li>
+                                        @if(Auth::user()->admin === 1)
+                                        <li>
+                                            <a class="dropdown-item" href="/admin">Администратор</a>
+                                        </li>
+                                        @endif
                                         <li>
                                             <form method="POST" action="{{route('logout') }}">
                                                 @csrf

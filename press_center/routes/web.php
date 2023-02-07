@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -28,5 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
     Route::post('/upload',[UploadController::class,'cropImage'])->name('crop');
 });
-
+Route::middleware('admin')->group(function (){
+   Route::get('admin/',[AdminController::class,'categories'])->name('admin');
+   Route::get("admin/category/create",[AdminController::class,'createCategory'])->name('category.create');
+   Route::post('admin/category/create',[AdminController::class,'postCategory'])->name('new-category');
+});
 require __DIR__.'/auth.php';

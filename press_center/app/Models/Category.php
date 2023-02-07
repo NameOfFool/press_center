@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Category
@@ -20,4 +23,21 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $table = 'categories';
+    protected $fillable =['name','description'];
+    public function child(): HasMany
+    {
+    return $this->hasMany(Category::class,'parent_id','id');
+    }
+    public function childs(): HasMany
+    {
+        return $this->hasMany(Category::class,'parent_id')->with('child');
+    }
+    public function parent():BelongsTo
+    {
+        return $this->belongsTo(Category::class,'parent_id');
+    }
+    public function parents(): BelongsTo
+    {
+        return $this->belongsTo(Category::class,'parent_id')->with('parent');
+    }
 }

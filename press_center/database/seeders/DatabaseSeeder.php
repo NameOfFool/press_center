@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Иван Тихонов',
             'email' => 'ivan-pauk2002@mail.ru',
-            'admin' => 0,
+            'admin' => 1,
+            'photo' => '1.png',
             'password' => Hash::make('12345678'),
         ]);
     }
