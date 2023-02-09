@@ -8,6 +8,8 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 @import 'node_modules/font-awesome/scss/font-awesome';
+@import 'node_modules/cropperjs/dist/cropper';
+@import 'node_modules/jquery-modal/jquery.modal';
 .main-nav nav
 {
     overflow: hidden;
@@ -250,7 +252,7 @@ header, nav, section, article, aside, footer, fieldset {
 
     padding:0;
 
-    list-style:none
+    list-style-type:none
 
 }
 

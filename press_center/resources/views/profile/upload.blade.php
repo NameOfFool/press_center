@@ -1,17 +1,10 @@
 @extends('layouts.app')
 <meta name="_token" content="{{csrf_token()}}">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
 <style>
     img {
         display: block;
         max-width: 100%;
     }
-
     .preview {
         overflow: hidden;
         width: 160px;
@@ -22,6 +15,9 @@
 
     .modal-lg {
         max-width: 1000px !important;
+    }
+    .modal{
+        max-width:100% !important;
     }
 </style>
 @section('content')
@@ -34,15 +30,11 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Laravel Cropper Js - Crop Image Before Upload -
-                        Tutsmake.com</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+                    <h5 class="modal-title" id="modalLabel">Laravel Cropper Js</h5>
                 </div>
                 <div class="modal-body">
                     <div class="img-container">
@@ -57,21 +49,26 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                    <a href="#" type="button" rel="modal:close" class="btn" data-dismiss="modal">Cancel</a>
                     <button type="button" class="btn btn-primary" id="crop">Crop</button>
                 </div>
             </div>
         </div>
     </div>
     <script type="module">
-        var $modal = $('#modal');
-        var image = document.getElementById('image');
-        var cropper;
+        let $modal = $('#modal');
+        let image = document.getElementById('image');
+        let cropper;
         $("body").on("change", ".image", function (e) {
             var files = e.target.files;
             var done = function (url) {
                 image.src = url;
                 $modal.modal('show');
+                cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    viewMode: 3,
+                    preview: '.preview'
+                });
             };
             let reader;
             let file;
@@ -119,6 +116,7 @@
                             console.log(data);
                             $modal.modal('hide');
                             alert("Crop image successfully uploaded");
+                            document.location="/"
                         },
                         error: function (jqxhr, status, errorMessage) {
                             console.log(errorMessage)

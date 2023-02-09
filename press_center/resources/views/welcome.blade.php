@@ -14,7 +14,7 @@
                         <!-- Featured image -->
                         <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4"
                              data-mdb-ripple-color="light">
-                            <img alt="" src="{!!Storage::url("public/image/news/original.jpg")!!}" class="img-fluid" />
+                            <img alt="" src="{!!url("image/news/original.jpg")!!}" class="img-fluid" />
                             <a href="#">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>

@@ -1,9 +1,13 @@
 import _ from 'lodash';
 window._ = _;
-import Popper from '@popperjs/core/dist/umd/popper';
 import 'mdb-ui-kit/js/mdb.min'
+import * as Popper from '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap';
+import 'jquery-modal'
+import $ from 'jquery'
+window.jQuery = $;
+window.$ = $;
 window.Popper = Popper
 import Cropper from "cropperjs";
 window.Cropper = Cropper;

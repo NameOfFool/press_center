@@ -1,7 +1,6 @@
 import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
 import {aliasToReal} from "lodash/fp/_mapping";
-
 export default defineConfig({
     plugins: [
         laravel({
@@ -12,5 +11,13 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-    ]
+    ],
+    resolve:{
+        alias:{
+            '$':"jQuery"
+        }
+    },
+    build:{
+        chunkSizeWarningLimit:1000
+    }
 });
