@@ -1,10 +1,15 @@
 <ul>
     @foreach($childs as $child)
         <li>
-            <label for="vehicle1"> {{ $child->name }}</label>
+            @if(isset($use_id)&&$use_id)
+                <button class="add_category" data-category_id="{{$category->id}}">{{$category->name}}</button>
+            @else
+                <a href="{{route("admin.news",['id' =>$child->id])}}">{{ $child->name }}</a>
+            @endif
             @if(count($child->childs))
-                @include('admin.categories.sub_child_category',['childs' => $child->childs])
+                @include('admin.categories.sub_category',['childs' => $child->childs])
             @endif
         </li>
     @endforeach
 </ul>
+g

@@ -13,8 +13,8 @@ class PageController extends Controller
         $news = News::paginate(3);
         return view('welcome',compact('news'));
     }
-    public function news(){
-        $news = News::find(1);
+    public function news($id){
+        $news = News::find($id);
         return view('news',compact('news'));
     }
 }

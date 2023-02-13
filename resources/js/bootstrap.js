@@ -5,6 +5,8 @@ import * as Popper from '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap';
 import 'jquery-modal'
+import 'bootstrap-datepicker'
+import 'datatables.net'
 import $ from 'jquery'
 window.jQuery = $;
 window.$ = $;

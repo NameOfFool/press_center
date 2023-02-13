@@ -4,12 +4,14 @@
 // Variables
 @import 'variables';
 @import 'node_modules/cropperjs/src/index';
+@import 'node_modules/datatables.net-dt/css/jquery.dataTables';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 @import 'node_modules/font-awesome/scss/font-awesome';
 @import 'node_modules/cropperjs/dist/cropper';
 @import 'node_modules/jquery-modal/jquery.modal';
+@import 'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker';
 .main-nav nav
 {
     overflow: hidden;
@@ -382,4 +384,7 @@ header, nav, section, article, aside, footer, fieldset {
 
     outline: 0;
 
+}
+i.fa{
+    cursor:pointer;
 }

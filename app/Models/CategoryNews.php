@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use PHPUnit\Exception;
 
 /**
  * App\Models\CategoryNews
@@ -20,4 +24,19 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryNews extends Model
 {
     use HasFactory;
+
+    public function news(): BelongsTo
+    {
+        return $this->belongsTo(News::class, 'news_id', 'id');
+    }
+
+    public static function getNewsByCategoryId(int $id)
+    {
+        try {
+            return CategoryNews::whereCategoryId($id)->firstOrFail()->news()->get();
+        }
+        catch (ModelNotFoundException $e){
+            return [];
+    }
+    }
 }

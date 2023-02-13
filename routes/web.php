@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 App::setLocale('ru');
 Route::get('/', [PageController::class, 'index'])->name("index");
-Route::get('/news', [PageController::class, 'news'])->name('news');
+Route::get('/news/{id}', [PageController::class, 'news'])->name('news');
 
 
 Route::middleware('auth')->group(function () {
@@ -28,10 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
     Route::post('/upload',[UploadController::class,'cropImage'])->name('crop');
+    Route::middleware('admin')->group(function (){
+        Route::get('admin/',[AdminController::class,'categories'])->name('admin');
+        Route::get("admin/category/create",[AdminController::class,'createCategory'])->name('category.create');
+        Route::get('admin/category/{id}/news/create',[AdminController::class,'createNews'])->name("news.create");
+        Route::post('admin/category/create',[AdminController::class,'postCategory'])->name('new-category');
+        Route::get('admin/category/{id}',[AdminController::class,'getNews'])->name("admin.news");
+    });
 });
-Route::middleware('admin','auth')->group(function (){
-   Route::get('admin/',[AdminController::class,'categories'])->name('admin');
-   Route::get("admin/category/create",[AdminController::class,'createCategory'])->name('category.create');
-   Route::post('admin/category/create',[AdminController::class,'postCategory'])->name('new-category');
-});
+
 require __DIR__.'/auth.php';

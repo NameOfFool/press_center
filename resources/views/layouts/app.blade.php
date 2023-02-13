@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    @section('head')
     <!-- CSRF Token -->
 
     <!-- Scripts -->
@@ -12,6 +13,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"/>
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    .modal{
+        max-width:100% !important;
+    }
+</style>
+    <x-rich-text-trix-styles />
+    @show
 
 </head>
 <body>
@@ -109,8 +117,9 @@
                                                  alt="Black and White Portrait of a Man"
                                             >
                                         @else
-                                            <img src="{{url("image/users/guest.png")}}" class="w-50 rounded-circle"
-                                                 height="25"
+                                            <img src="{{url("image/users/guest.png")}}"
+                                                 class="rounded-circle border border-2 border-"
+                                                 height="30"
                                                  alt="Black and White Portrait of a Man"
                                             >
                                         @endif
@@ -147,7 +156,7 @@
         </div>
     </nav>
 @show
-<main>
+<main class="container">
     @section('content')
     @show
 </main>
