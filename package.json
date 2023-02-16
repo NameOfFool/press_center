@@ -28,6 +28,7 @@
         "froala-editor": "^4.0.17",
         "jquery": "^3.6.3",
         "jquery-modal": "^0.9.2",
+        "md-date-time-picker": "^2.3.0",
         "mdb-ui-kit": "^6.1.0"
     }
 }

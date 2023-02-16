@@ -39,8 +39,15 @@ class AdminController extends Controller
         return redirect('/admin');
     }
     public function createNews($id){
-        $categories = Category::get();
+        $categories = Category::whereNull('parent_id')->get();
+        $allCategories = Category::pluck('name', 'id')->all();
         $current = Category::find($id);
-        return view('admin.news.create',compact("categories",'current'));
+        return view('admin.news.create',compact("categories",'current','allCategories'));
+    }
+    public function postNews(Request $request){
+        $categories = explode(", ",$request->cats);
+        $name = $request->name;
+        $
+        dd($categories);
     }
 }

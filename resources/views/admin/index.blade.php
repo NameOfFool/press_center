@@ -3,7 +3,7 @@
     <div class="container">
         <div class="form-group {{ $errors->has('parent_id') ? 'has-error' : '' }}">
             <h3>{{__("Category")}}:</h3>
-            <div class="col-md-6">
+            <div>
                 @include("admin.categories.tree")
             </div>
             @if ($errors->has('parent_id'))

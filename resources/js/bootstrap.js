@@ -6,6 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap';
 import 'jquery-modal'
 import 'bootstrap-datepicker'
+import 'md-date-time-picker/src/js/mdDateTimePicker'
 import 'datatables.net'
 import $ from 'jquery'
 window.jQuery = $;

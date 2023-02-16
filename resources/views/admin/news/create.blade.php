@@ -1,14 +1,12 @@
-@push('')
-
-@endpush
 @extends('layouts.app')
 @section('content')
     <x-rich-text-laravel::core-styles/>
-    <div class="card">
+    <form action="{{route("news.create")}}" method="post" class="card">
+        @csrf
         <div class="card-header">Новость</div>
-        <form action="" class="card-body">
+        <div class="card-body">
             <div class="form-outline">
-                <input type="text" class="form-control">
+                <input type="text" name="name" class="form-control">
                 <label for="" class="form-label">Название</label>
             </div>
             <div class="form-outline mt-4 mb-4">
@@ -16,16 +14,16 @@
             </div>
             <div class="row mb-4">
                 <div class="col">
-                    <div class="form-outline">
-                        <input type="text" value="{{now()}}" class="form-control datepicker"
+                    <div class="form-outline datetimepicker-inline">
+                        <input type="datetime-local" id="publication" value="{{now()}}" class="form-control"
                                name="date_of_publication"/>
                         <label class="form-label">Дата публикации</label>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="form-outline">
-                        <input type="text" value="01.01.5000 00:00" id="date" class="form-control datepicker"
-                               name="date_of_publication"/>
+                    <div class="form-outline datetimepicker-inline">
+                        <input type="datetime-local" id="drop" value="5000-01-01 00:00" class="form-control"
+                               name="date_of_drop"/>
                         <label class="form-label">Дата удаления</label>
                     </div>
                 </div>
@@ -36,7 +34,6 @@
                     <th>ID</th>
                     <th>Категория</th>
                 </tr>
-
                 </thead>
                 <tbody>
                 <tr>
@@ -45,7 +42,10 @@
                 </tr>
                 </tbody>
             </table>
-            <button class="btn btn-primary" id="add_category">Добавить привязку</button>
+            <div class="d-flex justify-content-around">
+                <button class="btn btn-secondary" id="add_category">Добавить привязку</button>
+                <button class="btn btn-primary" type="submit">Создать новость</button>
+            </div>
             <div id="modal" class="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-content">
                     <div class="modal-header">Выберите категорию</div>
@@ -54,33 +54,58 @@
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
     <script type="module" src="{{asset('tree.js')}}"></script>
     <script type="module">
-        let table = $("#table");
-        table.dataTable({
-            paging:false,
-            searching:false,
-            info:false,
-            ordering:false
+        function initializeDatepicker() {
+            var dialog = new mdDateTimePicker({
+                type: 'date',
+                future: moment().add(21, 'years')
+            });
+
+            var fields = document.querySelectorAll('input[type="datetime"]');
+
+            Array.prototype.forEach.call(fields, (field) => {
+                field.addEventListener('onOk', function () {
+                    field.value = x.time().toString();
+                });
+                field.addEventListener('click', function () {
+                    dialog.toggle();
+                });
+            });
+        }
+
+        let table = $("#table").DataTable({
+            paging: false,
+            searching: false,
+            info: false,
+            ordering: false
         });
-        $(".datepicker").datepicker({
-            format: "dd.mm.yyyy "
-        });
-        $(function () {
-            $(".datepicker").on("keyup", function (event) {
-                var value = $(this).val();
-            })
+        $("form").on("submit",function(event){
+            let categories = table.column(0).data().toArray();
+            $(this).append("<input name='cats' id='cats' type='hidden'>")
+            $("#cats").val(categories.join(", "))
         })
-        $("#add_category").on('click',function(event){
+
+        $("#add_category").on('click', function (event) {
             event.preventDefault()
-            $("#modal").modal('show')
-        })
-        $(".add_category").each(function(){
-            $(this).on("click",function(event){
-                event.preventDefault();
-                table.row.add($(this).dataset.category_id);
+            $("#modal").modal("show")
+            $(".add_category").each(function () {
+                $(this).on("click", function (event) {
+                    event.preventDefault();
+                    $.modal.close()
+                    let idArr = table.column(0).data().toArray()
+                    idArr.forEach(function (value, index, array) {
+                        array[index] = Number(value)
+                    })
+                    let id = $(this).data("categoryId")
+                    if (jQuery.inArray(id, idArr) !== -1) {
+                        alert("Эта категория уже выбрана")
+                    } else {
+                        table.row.add([$(this).data("categoryId"), $(this).html()]).draw(false);
+                    }
+                })
             })
         })
     </script>

@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
         Route::get('admin/category/{id}/news/create',[AdminController::class,'createNews'])->name("news.create");
         Route::post('admin/category/create',[AdminController::class,'postCategory'])->name('new-category');
         Route::get('admin/category/{id}',[AdminController::class,'getNews'])->name("admin.news");
+        Route::post("admin/category/news/create",[AdminController::class,'postNews'])->name('news.create');
     });
 });
 

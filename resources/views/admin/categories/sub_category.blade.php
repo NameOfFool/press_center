@@ -2,7 +2,7 @@
     @foreach($childs as $child)
         <li>
             @if(isset($use_id)&&$use_id)
-                <button class="add_category" data-category_id="{{$category->id}}">{{$category->name}}</button>
+                <button class="add_category" data-category-id="{{$child->id}}">{{$child->name}}</button>
             @else
                 <a href="{{route("admin.news",['id' =>$child->id])}}">{{ $child->name }}</a>
             @endif
@@ -12,4 +12,3 @@
         </li>
     @endforeach
 </ul>
-g

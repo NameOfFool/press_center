@@ -17,7 +17,6 @@ $.fn.extend({
                     icon.toggleClass(closedClass);
                     icon.toggleClass(openedClass);
                     branch.children().children().toggle();
-                    console.log(icon)
                 }
             })
             branch.children().children().toggle();
