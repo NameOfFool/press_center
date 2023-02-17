@@ -14,7 +14,7 @@
 
             <div class="col-md-6 mb-4">
                 <h4><strong>{{$news->name}}</strong></h4>
-                <div class="text-muted">{!!$news->content!!}</div>
+                <div class="text-muted">{!!base64_decode($news->content)!!}</div>
             </div>
         </div>
 

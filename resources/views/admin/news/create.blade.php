@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <x-rich-text-laravel::core-styles/>
-    <form action="{{route("news.create")}}" method="post" class="card">
+    <form action="{{route("news.create-post")}}" method="post" class="card">
         @csrf
         <div class="card-header">Новость</div>
         <div class="card-body">
@@ -10,7 +10,7 @@
                 <label for="" class="form-label">Название</label>
             </div>
             <div class="form-outline mt-4 mb-4">
-                <x-rich-text-laravel::trix-field name="content" class="form-textarea" id="content"/>
+                <x-rich-text-laravel::trix-field name="news_content" class="form-textarea" id="content"/>
             </div>
             <div class="row mb-4">
                 <div class="col">
@@ -85,7 +85,7 @@
         $("form").on("submit",function(event){
             let categories = table.column(0).data().toArray();
             $(this).append("<input name='cats' id='cats' type='hidden'>")
-            $("#cats").val(categories.join(", "))
+            $("#cats").val(categories.join(" "))
         })
 
         $("#add_category").on('click', function (event) {

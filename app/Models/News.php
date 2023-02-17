@@ -29,11 +29,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class News extends Model
 {   protected $table = 'news';
+    public $timestamps = false;
     protected $primaryKey = 'id';
     public $incrementing = 'true';
     protected $fillable =[
         'name',
-        'content'
+        'content',
+        'date_of_creation',
+        'date_of_drop',
+        'date_of_publication',
     ];
     use HasFactory;
     public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany

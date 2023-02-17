@@ -31,7 +31,7 @@
                         <a href="news?news={{$block->id}}" class="text-dark">
                             <h5>{{$block->name??""}}</h5>
 
-                            <p>{{mb_strimwidth($block->content,0,100,"...")}}</p>
+                            <p>{!!mb_strimwidth(base64_decode($block->content),0,100,"...")!!}</p>
                         </a>
                         <hr />
                     </div>

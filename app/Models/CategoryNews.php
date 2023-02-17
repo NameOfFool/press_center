@@ -20,10 +20,16 @@ use PHPUnit\Exception;
  * @method static \Illuminate\Database\Eloquent\Builder|CategoryNews whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CategoryNews whereNewsId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\News $news
  */
 class CategoryNews extends Model
 {
     use HasFactory;
+    protected $fillable = [
+      'category_id',
+      'news_id'
+    ];
+    public $timestamps = false;
 
     public function news(): BelongsTo
     {

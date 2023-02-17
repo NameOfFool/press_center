@@ -27,15 +27,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
-    Route::post('/upload',[UploadController::class,'cropImage'])->name('crop');
-    Route::middleware('admin')->group(function (){
-        Route::get('admin/',[AdminController::class,'categories'])->name('admin');
-        Route::get("admin/category/create",[AdminController::class,'createCategory'])->name('category.create');
-        Route::get('admin/category/{id}/news/create',[AdminController::class,'createNews'])->name("news.create");
-        Route::post('admin/category/create',[AdminController::class,'postCategory'])->name('new-category');
-        Route::get('admin/category/{id}',[AdminController::class,'getNews'])->name("admin.news");
-        Route::post("admin/category/news/create",[AdminController::class,'postNews'])->name('news.create');
+    Route::post('/upload', [UploadController::class, 'cropImage'])->name('crop');
+    Route::middleware('admin')->group(function () {
+        Route::get('admin/', [AdminController::class, 'categories'])->name('admin');
+        Route::get("admin/category/create", [AdminController::class, 'createCategory'])->name('category.create');
+        Route::get('admin/category/news/create/{id}', [AdminController::class, 'createNews'])->name("news.create");
+        Route::post('admin/category/create', [AdminController::class, 'postCategory'])->name('new-category');
+        Route::get('admin/category/{id}', [AdminController::class, 'getNews'])->name("admin.news");
+        Route::post("admin/category/news/create", [AdminController::class, 'postNews'])->name('news.create-post');
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
