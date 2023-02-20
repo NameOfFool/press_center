@@ -56,19 +56,12 @@
                             <a class="nav-link" href="#">FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Документы</a>
+                            <a class="nav-link" href="{{route("documents")}}">Документы</a>
                         </li>
                     </ul>
-                    <!-- Left links -->
                 </div>
-
             </div>
-            <!-- Left elements -->
-
-            <!-- Center elements -->
             <ul class="navbar-nav flex-row d-none d-md-flex">
-
-                <!-- Collapsible wrapper -->
             </ul>
             <!-- Center elements -->
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadController;
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
     Route::post('/upload', [UploadController::class, 'cropImage'])->name('crop');
+    Route::get('/documents',[DocumentController::class,'index'])->name("documents");
     Route::middleware('admin')->group(function () {
         Route::get('admin/', [AdminController::class, 'categories'])->name('admin');
         Route::get("admin/category/create", [AdminController::class, 'createCategory'])->name('category.create');
