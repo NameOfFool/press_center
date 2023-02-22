@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use  Illuminate\Database\Query\Builder;
 use PHPUnit\Exception;
 
 /**
@@ -39,7 +40,12 @@ class CategoryNews extends Model
     public static function getNewsByCategoryId(int $id)
     {
         try {
-            return CategoryNews::whereCategoryId($id)->firstOrFail()->news()->get();
+            $news = [];
+            $all = CategoryNews::whereCategoryId($id)->with('news')->get();
+            foreach ($all as $single){
+                $news[] = $single->news;
+            }
+            return $news;
         }
         catch (ModelNotFoundException $e){
             return [];

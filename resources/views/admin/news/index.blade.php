@@ -1,6 +1,6 @@
 @extends("layouts.app")
 @section("content")
-    @if(isset($news))
+    @if(!isset($news))
         <h1 class="text-center">Новостей пока нет</h1>
     @else
     <table class="table table-striped table-bordered text-center container">
@@ -18,6 +18,7 @@
         </thead>
         <tbody>
         @foreach($news as $single)
+
             <tr>
                 <td>{{$single->id}}</td>
                 <td>{{$single->name}}</td>

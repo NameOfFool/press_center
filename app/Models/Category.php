@@ -34,6 +34,8 @@ use Illuminate\Testing\Fluent\Concerns\Has;
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CategoryNews[] $news
+ * @property-read int|null $news_count
  */
 class Category extends Model
 {
@@ -55,5 +57,9 @@ class Category extends Model
     public function parents(): BelongsTo
     {
         return $this->belongsTo(Category::class,'parent_id')->with('parent');
+    }
+    public function news(): HasMany
+    {
+        return $this->hasMany(CategoryNews::class,'category_id','id');
     }
 }
