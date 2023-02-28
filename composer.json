@@ -16,6 +16,9 @@
         "pestphp/pest": "^1.16",
         "pestphp/pest-plugin-laravel": "^1.1",
         "phpoffice/phpword": "^1.0",
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.3",
+        "smalot/pdfparser": "^2.3",
         "tonysm/rich-text-laravel": "^1.6"
     },
     "require-dev": {
