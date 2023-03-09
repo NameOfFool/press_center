@@ -11,12 +11,14 @@ class DocumentController extends Controller
 {
     public function index()
     {
-        $documents = Document::all();;
+        $documents = Document::all();
+        $this->fillForm();
+        return view("documents.index",compact("documents"));
     }
 
     public function fillForm()
     {
-        $path = public_path("Form.pdf");
+        $path = public_path("3ndfl.pdf");
 
         $inn = "772649204886";
         $pdf = new Pdf($path, [
@@ -24,7 +26,7 @@ class DocumentController extends Controller
             'useExec' => true,
         ]);
         $result = $pdf->fillForm([
-            'Text1' => $inn
+            'INN' => $inn
         ])->needAppearances()->saveAs("foolish_form.pdf");
         if ($result === false) {
             dd($pdf->getError());

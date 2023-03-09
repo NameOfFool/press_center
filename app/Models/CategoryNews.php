@@ -20,8 +20,8 @@ use PHPUnit\Exception;
  * @method static \Illuminate\Database\Eloquent\Builder|CategoryNews query()
  * @method static \Illuminate\Database\Eloquent\Builder|CategoryNews whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CategoryNews whereNewsId($value)
- * @mixin \Eloquent
  * @property-read \App\Models\News $news
+ * @mixin \Eloquent
  */
 class CategoryNews extends Model
 {

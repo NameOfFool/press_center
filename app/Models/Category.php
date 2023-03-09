@@ -21,7 +21,6 @@ use Illuminate\Testing\Fluent\Concerns\Has;
  * @method static \Illuminate\Database\Eloquent\Builder|Category query()
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
- * @mixin \Eloquent
  * @property int|null $parent_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -36,6 +35,7 @@ use Illuminate\Testing\Fluent\Concerns\Has;
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CategoryNews[] $news
  * @property-read int|null $news_count
+ * @mixin \Eloquent
  */
 class Category extends Model
 {

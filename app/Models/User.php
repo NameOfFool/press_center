@@ -35,11 +35,15 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property int $admin
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAdmin($value)
  * @property string $photo
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePhoto($value)
+ * @property string $second_name
+ * @property string|null $announcement
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAnnouncement($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSecondName($value)
+ * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

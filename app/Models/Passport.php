@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Passport newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Passport newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Passport query()
- * @mixin \Eloquent
  * @property int $id
  * @property string $birth_data
  * @property string $sex
@@ -32,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Passport whereSeries($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Passport whereSex($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Passport whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Passport extends Model
 {

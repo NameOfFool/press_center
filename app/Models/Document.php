@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Document newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Document newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Document query()
- * @mixin \Eloquent
  * @property int $id
  * @property string $name
  * @property string $file
@@ -22,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Document whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Document whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Document whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Document extends Model
 {

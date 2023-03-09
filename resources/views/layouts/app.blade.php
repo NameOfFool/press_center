@@ -123,7 +123,7 @@
                                     >
                                         <li>
                                             <a class="dropdown-item"
-                                               href="{{route('profile.edit')}}">{{Auth::user()->name}}</a>
+                                               href="{{route('profile.edit')}}">{{Auth::user()->second_name}} {{Auth::user()->name}}</a>
                                         </li>
                                         @if(Auth::user()->admin === 1)
                                         <li>
