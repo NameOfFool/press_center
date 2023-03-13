@@ -34,13 +34,13 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Laravel Cropper Js</h5>
+                    <h5 class="modal-title" id="modalLabel">Выделите фрагмент</h5>
                 </div>
                 <div class="modal-body">
                     <div class="img-container">
                         <div class="row">
                             <div class="col-md-8">
-                                <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                                <img  id="image">
                             </div>
                             <div class="col-md-4">
                                 <div class="preview"></div>
@@ -49,8 +49,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" type="button" rel="modal:close" class="btn" data-dismiss="modal">Cancel</a>
-                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                    <a href="#" type="button" rel="modal:close" class="btn" data-dismiss="modal">Отмена</a>
+                    <button type="button" class="btn btn-primary" id="crop">Сохранить</button>
                 </div>
             </div>
         </div>
@@ -88,9 +88,9 @@
         });
         $modal.on('shown.bs.modal', function () {
             cropper = new Cropper(image, {
-                aspectRatio: 1,
-                viewMode: 3,
-                preview: '.preview'
+                viewMode: 0,
+                preview: '.preview',
+                modal:true
             });
         }).on('hidden.bs.modal', function () {
             cropper.destroy();

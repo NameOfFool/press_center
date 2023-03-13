@@ -21,10 +21,7 @@ class DocumentController extends Controller
         $path = public_path("3ndfl.pdf");
 
         $inn = "772649204886";
-        $pdf = new Pdf($path, [
-            'command' => 'C:\Program Files (x86)\PDFtk\bin\pdftk.exe',
-            'useExec' => true,
-        ]);
+        $pdf = new Pdf($path);
         $result = $pdf->fillForm([
             'INN' => $inn
         ])->needAppearances()->saveAs("foolish_form.pdf");

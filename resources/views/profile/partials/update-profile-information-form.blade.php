@@ -19,15 +19,28 @@
                 <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
                     @csrf
                     @method('PATCH')
+                    <div class="mb-3">
+                        <label class="small mb-1" for="second_name">{{__('Second Name')}}</label>
+                        <x-text-input class="form-control" id="second_name" name="second_name" type="text"
+                                      placeholder="Enter your second name"
+                                      value="{{old('second_name', $user->second_name)}}" required autofocus autocomplete="second name"/>
+                        <x-input-error class="mt-2" :messages="$errors->get('second_name')"/>
+                    </div>
                     <!-- Form Group (username)-->
                     <div class="mb-3">
                         <label class="small mb-1" for="name">{{__('Name')}}</label>
                         <x-text-input class="form-control" id="name" name="name" type="text"
-                                      placeholder="Enter your username"
+                                      placeholder="Enter your name"
                                       value="{{old('name', $user->name)}}" required autofocus autocomplete="name"/>
                         <x-input-error class="mt-2" :messages="$errors->get('name')"/>
                     </div>
-
+                    <div class="mb-3">
+                        <label class="small mb-1" for="">{{__('Announcement')}}</label>
+                        <x-text-input class="form-control" id="announcement" name="announcement" type="text"
+                                      placeholder="Enter your announcement"
+                                      value="{{old('name', $user->announcement)}}" required autofocus autocomplete="announcement"/>
+                        <x-input-error class="mt-2" :messages="$errors->get('announcement')"/>
+                    </div>
                     <!-- Form Group (email address)-->
                     <div class="mb-3">
                         <x-input-label class="small mb-1" for="email" :value="__('Email')"/>
