@@ -24,7 +24,7 @@ class DocumentController extends Controller
         $pdf = new Pdf($path);
         $result = $pdf->fillForm([
             'INN' => $inn
-        ])->needAppearances()->saveAs("foolish_form.pdf");
+        ])->needAppearances()->saveAs(public_path("foolish_form.pdf"));
         if ($result === false) {
             dd($pdf->getError());
         }

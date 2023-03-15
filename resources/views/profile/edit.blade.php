@@ -10,6 +10,14 @@
         <div class="">
             @include('profile.partials.update-profile-information-form')
             @include('profile.partials.update-password-form')
+            <section class="space-y-6">
+                <header>
+                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                        {{ __('Вы являетесь представителем организации?') }}
+                    </h2>
+                </header>
+                <a class="btn btn-primary" href="{{route("organisation.create")}}">{{ __('Добавить организацию') }}</a>
+            </section>
             @include('profile.partials.delete-user-form')
 
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class UploadController extends Controller
@@ -12,7 +13,7 @@ class UploadController extends Controller
         return view("profile.upload");
     }
     public function cropImage(Request $request){
-        $folderPath = public_path('image/users/');
+        $folderPath = public_path("/image/users/");
         $imageParts = explode(";base64,",$request->image);
         $imageTypeAux = explode('image/',$imageParts[0]);
         $imageType = $imageTypeAux[1];

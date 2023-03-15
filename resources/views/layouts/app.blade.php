@@ -69,20 +69,6 @@
             <!-- Right elements -->
             <ul class="navbar-nav flex-row">
                 <li class="nav-item me-3 me-lg-1">
-                    <form class="input-group rounded">
-                        <input
-                            autocomplete="off"
-                            type="search"
-                            class="form-control rounded"
-                            placeholder="{{__("Search")}}"
-                            style="min-width: 125px;"
-                        />
-                        <span class="input-group-text border-0 d-none d-lg-flex" id="search-addon"
-                        ><i class="fas fa-search"></i
-                            ></span>
-                    </form>
-                </li>
-                <li class="nav-item me-3 me-lg-1">
                     @if(!Auth::check())
                         <div class="d-flex align-items-center">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -105,10 +91,9 @@
                                         aria-expanded="false"
                                     >
                                         @if(isset(Auth::user()->photo))
-                                            <img src="{{url("image/users/".Auth::user()->photo)}}"
+                                            <img src="{{Auth::user()->getPhoto()}}"
                                                  class="rounded-circle border border-2 border-"
                                                  height="30"
-                                                 alt="Black and White Portrait of a Man"
                                             >
                                         @else
                                             <img src="{{url("image/users/guest.png")}}"

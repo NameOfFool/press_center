@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger("id")->primary();
             $table->foreign('id')->nullable()
                 ->references("id")->on("users")->onUpdate("Cascade")->onDelete("Cascade");
-            $table->integer("INN");
+            $table->string("INN");
         });
     }
 

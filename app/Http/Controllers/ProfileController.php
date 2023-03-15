@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\KPP;
+use App\Models\Organisation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,5 +58,20 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+    public function createOrganisation(){
+        return view("profile.create-organisation");
+    }
+    public function createOrganisationPost(Request $request){
+        $organisation = Organisation::create([
+            "organisation_name"=>$request->organisation_name,
+            "user_id"=>Auth::user()->id,
+            "organisation_email"=>$request->organisation_email
+        ]);
+        $organisation->kpp()->create([
+            "id"=>$organisation->id,
+            "KPP"=>$request->KPP
+        ]);
+        return \redirect("profile.edit");
     }
 }
