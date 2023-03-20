@@ -35,7 +35,8 @@ class AdminController extends Controller
         $parent_id = $request->root;
         $category = new Category();
         $category->name = $name;
-        $category->parent_id = $parent_id;
+        if ($parent_id != "NULL")
+            $category->parent_id = $parent_id;
         $category->save();
         return redirect('/admin');
     }
@@ -64,7 +65,7 @@ class AdminController extends Controller
             "content" => $content,
         ]);
         $news_id = $news->id;
-        foreach($categories as $category){
+        foreach ($categories as $category) {
             CategoryNews::create([
                 'category_id' => $category,
                 'news_id' => $news_id

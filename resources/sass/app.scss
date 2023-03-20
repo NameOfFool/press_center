@@ -8,7 +8,6 @@
 @import 'node_modules/md-date-time-picker/src/scss/component';
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
 @import 'node_modules/font-awesome/scss/font-awesome';
 @import 'node_modules/cropperjs/dist/cropper';
 @import 'node_modules/jquery-modal/jquery.modal';
@@ -24,6 +23,9 @@
 
 .invalid-feedback{
     margin-top: -0.75rem;
+}
+.form-check-input:checked:after{
+    content: none;
 }
 .main-nav ul:nth-child(2) li:first-child a
 {

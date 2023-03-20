@@ -72,6 +72,6 @@ class ProfileController extends Controller
             "id"=>$organisation->id,
             "KPP"=>$request->KPP
         ]);
-        return \redirect("profile.edit");
+        return \redirect(route("profile.edit"));
     }
 }

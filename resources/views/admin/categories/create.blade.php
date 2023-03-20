@@ -10,7 +10,7 @@
             <div class="mb-3">
                 <x-input-label for="root" class="form-label select-label" :value="__('Root Category')"/>
                 <select class="form-select" name="root">
-                    <option value="0">Нет</option>
+                    <option value="NULL">Нет</option>
                     @foreach($categories as $category)
                         <option value="{!! $category->id !!}">{{$category->name}}</option>
                     @endforeach

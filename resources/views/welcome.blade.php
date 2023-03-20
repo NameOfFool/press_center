@@ -10,7 +10,7 @@
                 <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
 
                     <!-- News block -->
-                    <div>
+                    <div class="">
                         <!-- Featured image -->
                         <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4"
                              data-mdb-ripple-color="light">

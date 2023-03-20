@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -83,6 +84,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+
     /**
      * @return string
      */
@@ -90,4 +92,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return url("image/users/" . $this->photo);
     }
+
+    public function organisation(): HasMany
+    {
+        return $this->hasMany(Organisation::class);
+    }
+
+
 }

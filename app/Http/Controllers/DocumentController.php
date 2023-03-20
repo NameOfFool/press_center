@@ -12,7 +12,7 @@ class DocumentController extends Controller
     public function index()
     {
         $documents = Document::all();
-        $this->fillForm();
+       // $this->fillForm();
         return view("documents.index",compact("documents"));
     }
 
