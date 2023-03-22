@@ -5,12 +5,12 @@
 
         <!--Section: Content-->
         <section>
-            <div class="row gx-lg-5">
+            <div class="row gx-lg-5 d-flex flex-row">
                 @foreach($news as $block)
-                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 d-flex">
 
                     <!-- News block -->
-                    <div class="">
+                    <div class="card px-3 pt-3">
                         <!-- Featured image -->
                         <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4"
                              data-mdb-ripple-color="light">
@@ -33,7 +33,6 @@
 
                             <p>{!!mb_strimwidth(base64_decode($block->content),0,100,"...")!!}</p>
                         </a>
-                        <hr />
                     </div>
                     <!-- News block -->
                 </div>

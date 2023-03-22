@@ -25,124 +25,15 @@
 
 </head>
 <body class="h-100 d-flex flex-column flex-nowrap" style="min-height:100%;">
-@include('layouts.territorial')
-@section('header')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-        <div class="container-fluid justify-content-between">
-            <!-- Left elements -->
-            <div class="d-flex">
-                <!-- Brand -->
-
-                <!-- Toggle button -->
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <!-- Collapsible wrapper -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a class="navbar-brand nav-link" href="{{route  ('index')}}">Пресс-центр налоговой грамотности</a>
-                    <!-- Left links -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">О нас</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route("documents")}}">Документы</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <ul class="navbar-nav flex-row d-none d-md-flex">
-            </ul>
-            <!-- Center elements -->
-
-            <!-- Right elements -->
-            <ul class="navbar-nav flex-row">
-                <li class="nav-item me-3 me-lg-1">
-                    @if(!Auth::check())
-                        <div class="d-flex align-items-center">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a href="/login" class="nav-link">Войти</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/register" class="nav-link">Регистрация</a>
-                                </li>
-                            </ul>
-                            @else
-                                <!-- Меню пользователя-->
-                                <div class="dropdown align-middle my-1">
-                                    <a
-                                        class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                                        href="#"
-                                        id="navbarDropdownMenuAvatar"
-                                        role="button"
-                                        data-mdb-toggle="dropdown"
-                                        aria-expanded="false"
-                                    >
-                                        @if(isset(Auth::user()->photo))
-                                            <img src="{{Auth::user()->getPhoto()}}"
-                                                 class="rounded-circle border border-2 border-"
-                                                 height="30"
-                                            >
-                                        @else
-                                            <img src="{{url("image/users/guest.png")}}"
-                                                 class="rounded-circle border border-2 border-"
-                                                 height="30"
-                                                 alt="Black and White Portrait of a Man"
-                                            >
-                                        @endif
-                                    </a>
-                                    <ul
-                                        class="dropdown-menu dropdown-menu-end"
-                                        aria-labelledby="navbarDropdownMenuAvatar"
-                                    >
-                                        <li>
-                                            <a class="dropdown-item"
-                                               href="{{route('profile.edit')}}">{{Auth::user()->second_name}} {{Auth::user()->name}}</a>
-                                        </li>
-                                        @if(Auth::user()->admin === 1)
-                                            <li>
-                                                <a class="dropdown-item" href="/admin">Администратор</a>
-                                            </li>
-                                        @endif
-                                        <li>
-                                            <form method="POST" action="{{route('logout') }}">
-                                                @csrf
-                                                <button class="dropdown-item" type="submit">Выход</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                        </div>
-                    @endif
-                </li>
-
-
-            </ul>
-            <!-- Right elements -->
-        </div>
-    </nav>
-@show
-<main class="container-fluid flex-grow-1 d-flex flex-column flex-lg-shrink-5" style="">
+@include("layouts.header")
+<main class="masthead flex-grow-1 d-flex flex-column flex-lg-shrink-5" style="">
     @section('content')
     @show
 </main>
 <!-- Footer -->
-<footer class="text-center s text-lg-start bg-light text-muted position-relative mt-5 w-100" style="">
+<footer class="text-center s text-lg-start bg-light text-white position-relative mt-5 w-100" style="">
     <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    <div class="text-center p-4" style="background-color: #1abc9c">
         © 2023 Copyright:
         <a class="text-reset fw-bold" href="http://fool.com:8000/">naloggrammary.ru</a>
     </div>

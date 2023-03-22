@@ -21,4 +21,5 @@ class INN extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable= ["id","INN"];
 }

@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Organisation whereOrganisationName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Organisation whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Organisation whereUserId($value)
+ * @property-read \App\Models\KPP|null $kpp
  * @mixin \Eloquent
  */
 class Organisation extends Model

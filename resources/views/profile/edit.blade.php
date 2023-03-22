@@ -9,10 +9,11 @@
     <div class="d-flex align-items-center justify-content-center">
         <div class="">
             @include('profile.partials.update-profile-information-form')
+            @include('profile.partials.edit-inn')
             @if($user->organisation[0]==NULL)
                 <section class="space-y-6">
                     <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                        {{ __('Вы являетесь представителем организации?') }}
+                        {!! __('Вы являетесь представителем организации?') !!}
                     </h2>
                     <a class="btn btn-primary" href="{{route("organisation.create")}}">{{ __('Добавить организацию') }}</a>
                 </section>

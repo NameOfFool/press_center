@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\INN;
 use App\Models\KPP;
 use App\Models\Organisation;
 use Illuminate\Http\RedirectResponse;
@@ -72,6 +73,16 @@ class ProfileController extends Controller
             "id"=>$organisation->id,
             "KPP"=>$request->KPP
         ]);
+        return \redirect(route("profile.edit"));
+    }
+    public function editInn(Request $request){
+        $validated = $request->validate([
+            'inn'=>'required|min:12'
+        ]);
+        $inn = INN::updateOrCreate(
+            ["id"=>$request->user()->id],
+            ["INN"=>$request->inn]
+        );
         return \redirect(route("profile.edit"));
     }
 }

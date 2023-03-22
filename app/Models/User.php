@@ -45,6 +45,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string|null $announcement
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAnnouncement($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSecondName($value)
+ * @property-read \App\Models\INN|null $inn
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
+ * @property-read int|null $organisation_count
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
@@ -96,6 +99,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function organisation(): HasMany
     {
         return $this->hasMany(Organisation::class);
+    }
+    public function inn(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(INN::class,"id");
     }
 
 

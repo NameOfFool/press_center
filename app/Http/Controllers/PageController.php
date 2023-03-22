@@ -10,6 +10,9 @@ use Illuminate\Routing\Controller;
 class PageController extends Controller
 {
     public function index(){
+        return view("layouts.guest");
+    }
+    public function main(){
         $news = News::paginate(3);
         return view('welcome',compact('news'));
     }
