@@ -1,5 +1,5 @@
 @section('header')
-    <nav class="navbar navbar-expand-lg bg-secondary sticky-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg bg-secondary" id="mainNav">
         <div class="container-fluid justify-content-between">
             <div class="d-flex">
                 <button

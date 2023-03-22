@@ -16,6 +16,11 @@
     .modal-lg {
         max-width: 1000px !important;
     }
+    .modal-body{
+        min-height: 400px;
+        max-height: 400px;
+    }
+
     .modal{
         max-width:100% !important;
     }
@@ -66,7 +71,7 @@
                 $modal.modal('show');
                 cropper = new Cropper(image, {
                     aspectRatio: 1,
-                    viewMode: 1,
+                    viewMode: 1 ,
                     preview: '.preview'
                 });
             };
