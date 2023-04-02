@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create("documents_tags",function (Blueprint $table){
+        Schema::create('documents_fields', function (Blueprint $table) {
+            $table->unsignedBigInteger('field_id');
             $table->unsignedBigInteger('document_id');
-            $table->unsignedBigInteger('tag_id');
-            $table->primary(['document_id','tag_id']);
+            $table->primary(['field_id','document_id']);
+            $table->foreign('field_id',)->on('fields')->references('id');
             $table->foreign('document_id',)->on('documents')->references('id');
-            $table->foreign('tag_id',)->on('tags')->references('id');
+            $table->string("pdf_field_name");
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('documents_fields');
     }
 };

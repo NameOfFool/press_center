@@ -12,16 +12,15 @@ class DocumentController extends Controller
     public function index()
     {
         $documents = Document::all();
-       // $this->fillForm();
-        return view("documents.index",compact("documents"));
+        return view("docs.index",compact("documents"));
     }
 
     public function fillForm()
     {
-        $path = public_path("3ndfl.pdf");
-
+        $path = public_path("docs/Template.pdf");
         $inn = "772649204886";
         $pdf = new Pdf($path);
+        $fields = $pdf->getDataFields();
         $result = $pdf->fillForm([
             'INN' => $inn
         ])->needAppearances()->saveAs(public_path("foolish_form.pdf"));

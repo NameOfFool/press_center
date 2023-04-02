@@ -48,7 +48,7 @@
                                       :value="old('email', $user->email)" required autocomplete="email"/>
                     </div>
                     <!-- Save changes button-->
-                    <x-primary-button class="btn btn-primary">{{ __('Save') }}</x-primary-button>
+                    <button class="btn btn-primary">{{ __('Save') }}</button>
                 </form>
             </div>
         </div>

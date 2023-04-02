@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\Models\News
@@ -34,13 +35,14 @@ class News extends Model
     public $incrementing = 'true';
     protected $fillable =[
         'name',
+        'id',
         'content',
         'date_of_creation',
         'date_of_drop',
         'date_of_publication',
     ];
     use HasFactory;
-    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class,'category_news','news_id','category_id');
     }

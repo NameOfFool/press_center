@@ -48,6 +48,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read \App\Models\INN|null $inn
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
  * @property-read int|null $organisation_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail

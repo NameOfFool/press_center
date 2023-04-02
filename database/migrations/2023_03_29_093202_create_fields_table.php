@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('organisations', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("user_id");
-            $table->string("organisation_name")->unique();
-            $table->string("organisation_email");
+            $table->string("field_name");
+            $table->string("auto_table_name")->nullable();
+            $table->string("auto_field_name")->nullable();
             $table->timestamps();
-        });
-        Schema::table('organisations',function (Blueprint $table){
-            $table->foreign("user_id")->references("id")->on("users");
         });
     }
 
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('organizations');
+        Schema::dropIfExists('fields');
     }
 };

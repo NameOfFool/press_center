@@ -73,7 +73,7 @@
                                         </li>
                                         @if(Auth::user()->admin === 1)
                                             <li>
-                                                <a class="dropdown-item" href="/admin">Администратор</a>
+                                                <a class="dropdown-item" href="{{route("admin")}}">Администратор</a>
                                             </li>
                                         @endif
                                         <li>

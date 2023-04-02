@@ -10,6 +10,7 @@
             <th rowspan="2">Название</th>
             <th rowspan="2">Дата создания</th>
             <th colspan="2">Публикация</th>
+            <th rowspan="2">Редактировать</th>
         </tr>
         <tr>
             <th>Начало публикации</th>
@@ -25,10 +26,11 @@
                 <td>{{$single->date_of_creation}}</td>
                 <td>{{$single->date_of_publication}}</td>
                 <td>{{$single->date_of_drop}}</td>
+                <td><a href="{{route("news.edit",["id"=>$single->id])}}" class="fa-edit fa"></a></td>
             </tr>
         @endforeach
         </tbody>
     </table>
     @endif
-    <a href="{{route("news.create",["id"=>$id])}}" class="btn btn-primary">Создать</a>
+    <a href="{{route("news.create",["id"=>$id])}}" class="btn btn-primary w-25 mx-auto">Создать</a>
 @endsection

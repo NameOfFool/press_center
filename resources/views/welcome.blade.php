@@ -4,10 +4,10 @@
     <div class="container">
 
         <!--Section: Content-->
-        <section>
+        <section class="my-4">
             <div class="row gx-lg-5 d-flex flex-row">
                 @foreach($news as $block)
-                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 d-flex">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 d-flex flex-grow-0 flex-shrink-0">
 
                     <!-- News block -->
                     <div class="card px-3 pt-3">
@@ -28,10 +28,10 @@
                         </div>
 
                         <!-- Article title and description -->
-                        <a href="news?news={{$block->id}}" class="text-dark">
+                        <a href="{{route("news",["id"=>$block->id])}}" class="text-dark">
                             <h5>{{$block->name??""}}</h5>
 
-                            <p>{!!mb_strimwidth(base64_decode($block->content),0,100,"...")!!}</p>
+                            <p>{!!mb_strimwidth(strip_tags(base64_decode($block->content)),0,60,"...")!!}</p>
                         </a>
                     </div>
                     <!-- News block -->

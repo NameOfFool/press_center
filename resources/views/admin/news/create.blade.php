@@ -4,25 +4,36 @@
     <form action="{{route("news.create-post")}}" method="post" class="card">
         @csrf
         <div class="card-header">Новость</div>
+        @if(isset($news))
+            <input type="hidden" value="{{$news->id}}" name="id">
+        @endif
         <div class="card-body">
             <div class="form-outline">
-                <input type="text" name="name" class="form-control">
-                <label for="" class="form-label">Название</label>
+                <input type="text" name="name" class="form-control" value="{{isset($news)?$news->name:""}}">
+                <label for="name" class="form-label">Название</label>
             </div>
             <div class="form-outline mt-4 mb-4">
-                <x-rich-text-laravel::trix-field name="news_content" class="form-textarea" id="content"/>
+                @if(isset($news))
+                    <x-trix-field name="news_content" value="{!!base64_decode($news->content)!!}" class="form-textarea"
+                                  id="content"/>
+                @else
+                    <x-trix-field name="news_content" class="form-textarea"
+                                  id="content"/>
+                @endif
             </div>
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline datetimepicker-inline">
-                        <input type="datetime-local" id="publication" value="{{now()}}" class="form-control"
+                        <input type="datetime-local" id="publication"
+                               value="{{isset($news)?$news->date_of_publication:now()}}" class="form-control"
                                name="date_of_publication"/>
                         <label class="form-label">Дата публикации</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-outline datetimepicker-inline">
-                        <input type="datetime-local" id="drop" value="5000-01-01 00:00" class="form-control"
+                        <input type="datetime-local" id="drop"
+                               value="{{isset($news)?$news->date_of_drop:"5000-01-01 00:00"}}" class="form-control"
                                name="date_of_drop"/>
                         <label class="form-label">Дата удаления</label>
                     </div>
@@ -37,14 +48,21 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{$current->id}}</td>
-                    <td>{{$current->name}}</td>
+                    @if(isset($current))
+                        <td>{{$current->id}}</td>
+                        <td>{{$current->name}}</td>
+                    @else
+                        @foreach($categories as $category)
+                            <td>{{$category->id}}</td>
+                            <td>{{$category->name}}</td>
+                        @endforeach
+                    @endif
                 </tr>
                 </tbody>
             </table>
             <div class="d-flex justify-content-around">
                 <button class="btn btn-secondary" id="add_category">Добавить привязку</button>
-                <button class="btn btn-primary" type="submit">Создать новость</button>
+                <button class="btn btn-primary" type="submit">Сохранить</button>
             </div>
             <div id="modal" class="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-content">
@@ -65,7 +83,6 @@
             });
 
             var fields = document.querySelectorAll('input[type="datetime"]');
-
             Array.prototype.forEach.call(fields, (field) => {
                 field.addEventListener('onOk', function () {
                     field.value = x.time().toString();
@@ -82,7 +99,7 @@
             info: false,
             ordering: false
         });
-        $("form").on("submit",function(event){
+        $("form").submit(function (event) {
             let categories = table.column(0).data().toArray();
             $(this).append("<input name='cats' id='cats' type='hidden'>")
             $("#cats").val(categories.join(" "))
