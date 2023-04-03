@@ -18080,10 +18080,7 @@
 }
 
     namespace Illuminate\Http {
-            /**
-     *
-     *
-     */
+
         class Request {
                     /**
          *

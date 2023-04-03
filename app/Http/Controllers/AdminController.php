@@ -135,7 +135,7 @@ class AdminController extends Controller
         $file_name = $request->file_name;
         $name = $request->name;
         $file = $_FILES['file']['tmp_name'];
-        $upload = Storage::put("documents/$file_name.pdf", $file);
+        Storage::put("documents/$file_name.pdf", file_get_contents($file));
         $document = Document::create(["name"=>$name,"file"=>$file_name]);
         foreach($request->toArray() as $key=>$value){
             if($key!=="file_name"&&$key!=="name"&&$key!=="_token"&&$key!=="file"&&$value!=="none"){
@@ -157,25 +157,5 @@ class AdminController extends Controller
             'auto_field_name' => $table[0]
         ]);
         return redirect(route("document.create"));
-    }
-
-    public function getAutoFields()
-    {
-        $fields = Field::all();
-    }
-
-    public function autoFilling(Request $request)
-    {
-        $id = $request->id;
-        $document = Document::whereId($id);
-        $pdf = new Pdf($document->file);
-        $data = [];
-        $fields = $document->fields;
-        foreach ($fields as $field) {
-            $columns = Schema::getColumnListing("$field->auto_table_name");//Потом проверить
-            $data["$field->field_name"] = $field;
-        }
-        $pdf->fillForm($data)->needAppearances()->saveAs("tmp/$document->file");
-        return response()->download("tmp/$document->file");
     }
 }

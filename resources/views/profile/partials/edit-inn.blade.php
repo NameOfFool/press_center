@@ -3,11 +3,11 @@
         @csrf
         @method('put')
         <div class="mb-3">
-            <x-input-label class="small mb-1" for="inn" :value="__('ИНН')"/>
+            <label class="small mb-1" for="inn" >{{__('ИНН')}}</label>
             @if(isset($user->inn))
-                <x-text-input class="form-control" id="inn" placeholder="ИНН" name="inn" {{$user->inn->INN}} type="text"/>
+                <input class="form-control" id="inn" placeholder="ИНН" name="inn" {{$user->inn->INN}} type="text"/>
             @else
-                <x-text-input class="form-control" id="inn" placeholder="ИНН" name="inn" type="text"/>
+                <input class="form-control" id="inn" placeholder="ИНН" name="inn" type="text"/>
             @endif
             <x-input-error :messages="$errors->get('inn')" class="mt-2"/>
         </div>

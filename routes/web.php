@@ -24,7 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
     Route::post('/upload', [UploadController::class, 'cropImage'])->name('crop');
-    Route::get('/documents',[DocumentController::class,'fillForm'])->name("documents");
+    Route::get('/documents',[DocumentController::class,'index'])->name("documents");
+    Route::get('/documents/{id}',[DocumentController::class,"fillForm"])->name("document.download");
     Route::middleware('admin')->group(function () {
         require __DIR__.'/admin.php';
     });
