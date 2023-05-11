@@ -17,6 +17,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 use mikehaertl\pdftk\Pdf;
+use PhpParser\Comment\Doc;
 use Schema;
 use Storage;
 
@@ -31,7 +32,7 @@ class AdminController extends Controller
     {
         $categories = Category::whereNull('parent_id')->get();
         $allCategories = Category::pluck('name', 'id')->all();
-        return view('admin.index', compact('categories', 'allCategories'));
+        return view('admin.categories.index', compact('categories', 'allCategories'));
     }
 
     public function createCategory()
@@ -86,7 +87,8 @@ class AdminController extends Controller
         $content = base64_encode($request->news_content);
         $date_of_drop = $request->date_of_drop;
         $date_of_creation = now();
-        $news_id = $request->id ?? News::orderByDesc("id")->get()[0]->id + 1;
+        $last_news = News::count()>0?News::orderByDesc("id")->get()[0]->id:0;
+        $news_id = $request->id ?? $last_news + 1;
         $news = News::updateOrInsert(
             ["id" => $news_id], [
             "name" => $name,
@@ -109,13 +111,36 @@ class AdminController extends Controller
         $documents = Document::all();
         return view("admin.documents.index", compact("documents"));
     }
-
-    public function createDoc()
+    public function editDoc(int $id)
+    {
+        $document = Document::whereId($id)->get()[0];
+        $fields = Field::all();
+        $user_columns = $this->getUserColumns();
+        $organisation_columns = $this->getOrganisationColumns();
+        $pdfFields = $document->fieldsName;
+        return view("admin.documents.create",compact([
+            "fields",
+            "pdfFields",
+            "document",
+            "user_columns",
+            "organisation_columns"
+        ]));
+    }
+    function getUserColumns(): array
     {
         $user_columns = Schema::getColumnListing("users");
-        $user_columns = array_diff($user_columns, ['id', 'admin', 'photo', 'password', 'remember_token', 'created_at', 'updated_at', 'email_verified_at']);
+        return array_diff($user_columns, ['id', 'admin', 'photo', 'password', 'remember_token', 'created_at', 'updated_at', 'email_verified_at']);
+
+    }
+    function getOrganisationColumns():array
+    {
         $organisation_columns = Schema::getColumnListing("organisations");
-        $organisation_columns = array_diff($organisation_columns, ['id', 'user_id', 'created_at', 'updated_at']);
+        return array_diff($organisation_columns, ['id', 'user_id', 'created_at', 'updated_at']);
+    }
+    public function createDoc()
+    {
+        $user_columns = $this->getUserColumns();
+        $organisation_columns = $this->getOrganisationColumns();
         $fields = Field::all();
         return view("admin.documents.create", compact(
             "user_columns",
@@ -143,7 +168,7 @@ class AdminController extends Controller
                 DocumentField::create(["field_id"=>$value,"document_id"=>$document->id,"pdf_field_name"=>$key]);
             }
         }
-        return redirect("tags");
+        return redirect("documents");
     }
 
     public function createNewAutoField(Request $request): Redirector|Application|RedirectResponse

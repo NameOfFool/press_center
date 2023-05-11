@@ -31,9 +31,20 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Passport whereSeries($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Passport whereSex($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Passport whereUpdatedAt($value)
+ * @property string $birth_date
+ * @method static \Illuminate\Database\Eloquent\Builder|Passport whereBirthDate($value)
  * @mixin \Eloquent
  */
 class Passport extends Model
 {
+    protected $fillable = [
+        "birth_date",
+        "sex",
+        "series",
+        "number",
+        "date_of_issue",
+        "issued_by",
+        "code",
+    ];
     use HasFactory;
 }

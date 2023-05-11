@@ -1,10 +1,11 @@
 @extends('layouts.app')
-<meta name="_token" content="{{csrf_token()}}">
+<meta name="_token" content="{{ csrf_token() }}">
 <style>
     img {
         display: block;
         max-width: 100%;
     }
+
     .preview {
         overflow: hidden;
         width: 160px;
@@ -16,13 +17,14 @@
     .modal-lg {
         max-width: 1000px !important;
     }
-    .modal-body{
+
+    .modal-body {
         min-height: 400px;
         max-height: 400px;
     }
 
-    .modal{
-        max-width:100% !important;
+    .modal {
+        max-width: 100% !important;
     }
 </style>
 @section('content')
@@ -30,13 +32,13 @@
         <div class="card">
             <h2 class="card-header">Выберите изображение</h2>
             <div class="card-body">
-                <h5 class="card-title">{{__("Please Selete Image For Cropping")}}</h5>
+                <h5 class="card-title">{{ __('Please Selete Image For Cropping') }}</h5>
                 <input type="file" name="image" class="image">
             </div>
         </div>
     </div>
-    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabel">Выделите фрагмент</h5>
@@ -45,7 +47,7 @@
                     <div class="img-container">
                         <div class="row">
                             <div class="col-md-8">
-                                <img  id="image">
+                                <img id="image">
                             </div>
                             <div class="col-md-4">
                                 <div class="preview"></div>

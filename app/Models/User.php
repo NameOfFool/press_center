@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -49,8 +50,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
  * @property-read int|null $organisation_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
+ * @property-read \App\Models\Passport|null $passport
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
  * @mixin \Eloquent
@@ -105,9 +105,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Organisation::class);
     }
-    public function inn(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function inn(): HasOne
     {
         return $this->hasOne(INN::class,"id");
+    }
+    public function passport():HasOne{
+        return $this->hasOne(Passport::class,"id");
     }
 
 

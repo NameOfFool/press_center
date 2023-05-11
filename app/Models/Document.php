@@ -25,17 +25,27 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
  * @property-read int|null $tags_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Field> $fields
+ * @property-read int|null $fields_counts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Field> $fields
  * @property-read int|null $fields_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DocumentField> $fieldsName
+ * @property-read int|null $fields_name_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Field> $fields
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DocumentField> $fieldsName
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
  * @mixin \Eloquent
  */
 class Document extends Model
 {
     use HasFactory;
+    protected $table = "documents";
     protected $fillable = [
       "name","file"
     ];
     public function tags(): BelongsToMany
     {
+
         return $this->belongsToMany(Tag::class,
             'documents_tags',"document_id","tag_id");
     }
@@ -43,5 +53,8 @@ class Document extends Model
     {
         return $this->belongsToMany(Field::class,
         'documents_fields','document_id','field_id');
+    }
+    public function fieldsName(){
+        return $this->hasMany(DocumentField::class);
     }
 }

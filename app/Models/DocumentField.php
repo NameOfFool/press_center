@@ -11,6 +11,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentField newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentField newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentField query()
+ * @property int $field_id
+ * @property int $document_id
+ * @property string $pdf_field_name
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentField whereDocumentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentField whereFieldId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentField wherePdfFieldName($value)
  * @mixin \Eloquent
  */
 class DocumentField extends Model

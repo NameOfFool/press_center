@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 Route::get('admin/', [AdminController::class, 'index'])->name('admin');
 Route::get("admin/category",[AdminController::class,'categories'])->name("category");
 Route::get("admin/category/news/edit/{id}",[AdminController::class,'editNews'])->name("news.edit");
+Route::get("admin/documents/edit/{id}",[AdminController::class,'editDoc'])->name("document.edit");
 Route::get("admin/category/create", [AdminController::class, 'createCategory'])->name('category.create');
 Route::get('admin/category/news/create/{id}', [AdminController::class, 'createNews'])->name("news.create");
 Route::post('admin/category/create', [AdminController::class, 'postCategory'])->name('new-category');

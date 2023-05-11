@@ -4,7 +4,6 @@
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6 card-body">
         @csrf
         @method('put')
-
         <div class="mb-3">
             <x-input-label class="small mb-1" for="current_password" :value="__('Current Password')" />
             <x-text-input class="form-control" id="current_password" name="current_password" type="password" autocomplete="current-password" />

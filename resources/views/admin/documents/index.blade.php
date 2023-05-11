@@ -11,14 +11,14 @@
 
         </thead>
         <tbody>
-        <tr>
         @foreach($documents as $document)
+            <tr>
             <td>{{$document->id}}</td>
                 <td>{{$document->name}}</td>
                 <td>{{$document->created_at}}</td>
-                <td><a href="" class="fa-edit fa"></td>
-        @endforeach
+                <td><a href="{{route("document.edit",["id"=>$document->id])}}" class="fa-edit fa">  </a></td>
         </tr>
+        @endforeach
         </tbody>
     </table>
     <a class="btn-primary btn w-25 mx-auto" href="{{route("document.create")}}">Создать</a>

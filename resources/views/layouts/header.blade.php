@@ -20,7 +20,7 @@
                             <a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route("main")}}">Новости</a>
                         </li>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">FAQ</a>
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route("grammary")}}">Грамотность</a>
                         </li>
                         <li class="nav-item mx-0 mx-lg-1">
                             <a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route("documents")}}">Документы</a>

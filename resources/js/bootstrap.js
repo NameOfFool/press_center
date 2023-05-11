@@ -2,7 +2,7 @@ import _ from 'lodash';
 window._ = _;
 import 'mdb-ui-kit/js/mdb.min'
 import * as Popper from '@popperjs/core';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+//import 'bootstrap/dist/js/bootstrap.bundle.min';
 import * as bootstrap from 'bootstrap';
 import 'jquery-modal'
 import 'bootstrap-datepicker'

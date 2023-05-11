@@ -16,16 +16,12 @@ Route::get('/news/{id}', [PageController::class, 'news'])->name('news');
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get("/orgcreate",[ProfileController::class,'createOrganisation'])->name("organisation.create");
-    Route::put("/profile/inn",[ProfileController::class,'editInn'])->name("inn.update");
-    Route::post("/orgcreate",[ProfileController::class,'createOrganisationPost'])->name("post.organisation.create");
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    require __DIR__.'/profile.php';
     Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
     Route::post('/upload', [UploadController::class, 'cropImage'])->name('crop');
     Route::get('/documents',[DocumentController::class,'index'])->name("documents");
     Route::get('/documents/{id}',[DocumentController::class,"fillForm"])->name("document.download");
+    require __DIR__.'/grammary.php';
     Route::middleware('admin')->group(function () {
         require __DIR__.'/admin.php';
     });

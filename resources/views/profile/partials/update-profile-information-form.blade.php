@@ -16,9 +16,8 @@
                         <a href="{{route('upload')}}" class="btn btn-primary" data-mdb-riddle-duration="0" type="button">{{__("Upload new image")}}</a>
                     </div>
                 </div>
-                <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
-                    @csrf
-                    @method('PATCH')
+                <div>
+
                     <div class="mb-3">
                         <label class="small mb-1" for="second_name">{{__('Second Name')}}</label>
                         <x-text-input class="form-control" id="second_name" name="second_name" type="text"
@@ -38,7 +37,7 @@
                         <label class="small mb-1" for="">{{__('Announcement')}}</label>
                         <x-text-input class="form-control" id="announcement" name="announcement" type="text"
                                       placeholder="Enter your announcement"
-                                      value="{{old('name', $user->announcement)}}" required autofocus autocomplete="announcement"/>
+                                      value="{{old('announcement', $user->announcement)}}" required autofocus autocomplete="announcement"/>
                         <x-input-error class="mt-2" :messages="$errors->get('announcement')"/>
                     </div>
                     <!-- Form Group (email address)-->
@@ -49,7 +48,7 @@
                     </div>
                     <!-- Save changes button-->
                     <button class="btn btn-primary">{{ __('Save') }}</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -91,5 +90,4 @@
             >{{ __('Saved.') }}</p>
         @endif
     </div>
-    </form>
 </section>

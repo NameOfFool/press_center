@@ -1,19 +1,20 @@
 @extends("layouts.app")
 @section("content")
     <div class="container">
-        <form action="{{route("document.create.post")}}" method="post" class="mt-6 space-y-6" id="document" enctype="multipart/form-data">
+        <form action="{{route("document.create.post")}}" method="post" class="mt-6 space-y-6" id="document"
+              enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <x-input-label for="name" class="form-label" :value="__('Name')"/>
-                <x-text-input class="form-control" name="name"/>
+                <label for="name" class="form-label">{{__('Name')}}</label>
+                <input type="text" class="form-control" name="name" value="{{isset($document)?$document->name:null}}">
             </div>
             <div class="mb-3">
                 <x-input-label for="file_name" class="form-label" :value="__('Название файла')"/>
-                <x-text-input class="form-control" name="file_name"/>
+                <x-text-input class="form-control" name="file_name" value="{{isset($document)?$document->file:null}}"/>
             </div>
             <div class="mb-3">
                 <x-input-label for="file" class="form-label select-label" :value="__('PDF Файл')"/>
-                <input type="file" class="form-control" name="file" id="file">
+                <input type="file" class="form-control" name="file" id="file" value="{{isset($document)?storage_path("documents/".$document->file):null}}">
             </div>
         </form>
         <form class="modal" action="{{route("document.field")}}" method="post" id="addField">
@@ -41,42 +42,45 @@
         </form>
     </div>
     <script type="module">
-        $("#file").on("change",function(event){
+        function getFields(event) {
+            console.log('!!')
             let file = event.target.files[0];
             let data = new FormData();
             let fields = {{Js::from($fields)}};
-            data.append("file",file);
-            data.append("_token",$("input[name='_token']").val())
+            data.append("file", file);
+            data.append("_token", $("input[name='_token']").val())
             $.ajax({
-                type:"POST",
-                data:data,
-                contentType:false,
-                processData:false,
-                url:"{{route("document.create.load_fields")}}",
-                success:function (data){
-                    for(let i in data){
+                type: "POST",
+                data: data,
+                contentType: false,
+                processData: false,
+                url: "{{route("document.create.load_fields")}}",
+                success: function (data) {
+                    for (let i in data) {
                         let input = $(`<div class="mb-3"><label for="root" class="form-label select-label" >`
-                            +data[i]["FieldName"]+
+                            + data[i]["FieldName"] +
                             `</label><select type="text" class="form-select open" name="`
-                            +data[i]["FieldName"]+
-                            `" id="`+data[i]["FieldName"]
-                            +`"><option value="none">Не заполнять</option>
+                            + data[i]["FieldName"] +
+                            `" id="` + data[i]["FieldName"]
+                            + `"><option value="none">Не заполнять</option>
 <option value="other" class="option_other">Другое...</option></select></div>`);
                         $("#document").append(input);
 
                     }
-                    for(let field of fields){
-                    $("#document select .option_other").before(`<option value="`+field.id+`">`+field.field_name+`</option>`);
+                    for (let field of fields) {
+                        $("#document select .option_other").before(`<option value="` + field.id + `">` + field.field_name + `</option>`);
                     }
                     $("#document").append('<button id="sub" class="btn btn-primary">Создать</button>');
-                    $(".open").on("change",(event)=>{
-                        if(event.target.value==="other"){
+                    $(".open").on("change", (event) => {
+                        if (event.target.value === "other") {
                             let $modal = $("#addField")
                             $modal.modal("show")
                         }
                     })
                 }
             })
-        })
+        }
+        $("#file").on("load", getFields);
+        $("#file").on("change", getFields);
     </script>
 @endsection

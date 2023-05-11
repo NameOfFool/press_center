@@ -4,6 +4,9 @@
     @section('head')
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <meta charset="utf-8">
+        @livewire('livewire-ui-modal')
+        @livewireScripts
+        @livewireStyles
         <link rel="icon" href="{{asset("favicon.ico")}}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Пресс центр налоговой грамотности</title>
