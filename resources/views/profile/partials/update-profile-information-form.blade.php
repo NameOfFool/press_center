@@ -8,7 +8,7 @@
                         <img class=" rounded-circle mb-2 w-50 mx-auto"
                              src="
                              @if(isset($user->photo))
-                             {{url("image/users/".$user->photo)}}" alt="">
+                             {{Auth::user()->getPhoto()}}" alt="">
                         @else
                             {{url("image/users/guest.png")}}" alt="">
                         @endif

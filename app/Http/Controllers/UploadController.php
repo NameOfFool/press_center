@@ -15,8 +15,7 @@ class UploadController extends Controller
     public function cropImage(Request $request){
         $folderPath = public_path("/image/users/");
         $imageParts = explode(";base64,",$request->image);
-        $imageTypeAux = explode('image/',$imageParts[0]);
-        $imageType = $imageTypeAux[1];
+
         $imageBase64 = base64_decode($imageParts[1]);
         $imageName = \Auth::user()->id.'.png';
         $imagePath = $folderPath.$imageName;
