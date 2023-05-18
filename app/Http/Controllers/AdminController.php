@@ -17,7 +17,6 @@ use Illuminate\Routing\Redirector;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 use mikehaertl\pdftk\Pdf;
-use PhpParser\Comment\Doc;
 use Schema;
 use Storage;
 
