@@ -21,6 +21,7 @@
         "phpoffice/phpword": "^1.0",
         "smalot/pdfparser": "^2.3",
         "tonysm/rich-text-laravel": "^1.7",
+        "twbs/bootstrap-icons": "^1.10",
         "wire-elements/modal": "^1.0"
     },
     "require-dev": {

@@ -33,7 +33,7 @@
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: #1abc9c">
         © 2023 Copyright:
-        <a class="text-reset fw-bold" href="http://fool.com:8000/">naloggrammary.ru</a>
+        <a class="text-reset fw-bold" href="{{route("main")}}">naloggrammary.ru</a>
     </div>
 </footer>
 </div>

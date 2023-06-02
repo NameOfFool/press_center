@@ -53,6 +53,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read \App\Models\Passport|null $passport
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organisation> $organisation
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail

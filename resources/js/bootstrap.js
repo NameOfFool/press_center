@@ -7,6 +7,7 @@ import * as bootstrap from 'bootstrap';
 import 'jquery-modal'
 import 'bootstrap-datepicker'
 import 'md-date-time-picker/src/js/mdDateTimePicker'
+import 'prismjs'
 import 'datatables.net'
 import $ from 'jquery'
 window.jQuery = $;
