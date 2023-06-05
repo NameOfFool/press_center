@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->unsignedBigInteger("id");
+            $table->unsignedBigInteger("id")->autoIncrement();
             $table->foreignId("lesson_id")->constrained("lessons");
             $table->primary(['id','lesson_id']);
             $table->string("question");

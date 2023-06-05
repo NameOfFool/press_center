@@ -11516,6 +11516,10 @@ html {
     transform: none !important;
     min-width: inherit;
   }
+  .btn-more{
+    background: none; 
+    border:0;
+  }
   .videoplayer .dropup-volume .form-range {
     -webkit-appearance: slider-vertical;
     width: 1rem !important;

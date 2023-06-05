@@ -1,47 +1,20 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="d-flex flex-column">
-            <h1 class="card-header text-center">{{$lesson->name}}</h1>
-            <div class="videoplayer" id="myCustomPlayer">
-                <div class="ratio ratio-16x9 bg-dark">
-                    <video class="video">
-                        <source src="{{ route("grammary.video",["name"=>$lesson->video])}}" type="video/mp4">
-                    </video>
-                    <div>
-                        <div class="controls">
-                            <button class="btn btn-lg btn-video-playpause" type="button" title="Play Video">
-                                <i class="bi bi-play-fill"></i>
-                                <i class="bi bi-pause-fill d-none"></i>
-                            </button>
-                            <div class="px-1 w-100">
-                                <div class="progress w-100">
-                                    <div class="progress-bar"></div>
-                                </div>
-                            </div>
-                            <button class="btn btn-lg btn-video-pip" title="Play picture in picture">
-                                <i class="bi bi-pip"></i>
-                            </button>
-                            <button class="btn btn-lg btn-video-fullscreen">
-                                <i class="bi bi-arrows-fullscreen"></i>
-                            </button>
-                            <div class="dropup">
-                                <button class="btn btn-lg btn-video-volume" data-bs-toggle="dropdown" title="Volume">
-                                    <i class="bi bi-volume-mute-fill"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end dropup-volume">
-                                    <input type="range" class="form-range form-range-volume">
-                                </div>
-                            </div>
-                            <div class="dropup">
-                                <button class="btn btn-lg" data-bs-toggle="dropdown" title="More...">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="d-flex flex-column rounded-5 px-4 bg-secondary text-white">
+            @include('grammary.components.videoplayer')
+            <div class="py-3 my-2">
+                <span id="description">{{ mb_strimwidth($lesson->description, 0, 120, '...') }}</span>
+                <button class="link-info btn-more">Ещё</button>
             </div>
+        </div>
+        <div class="">
+            <h1 class="text-center">Текстовый вариант</h1>
+            <span id="description">{{ $lesson->text }}</span>
+        </div>
+        <div class="text-center">
+            <h1 class="text-center">Изучили тему?</h1>
+            <a class="btn btn-primary fs-5 mt-2" href="{{route("grammary.test",["id"=>$lesson->id])}}">Пройти тест</a>
         </div>
     </div>
 @endsection
@@ -49,6 +22,17 @@
 
 
 <script type="module">
+    document.getElementsByClassName("btn-more")[0].onclick = function ()
+    {
+        if(document.getElementById("description").innerHTML!=="{{$lesson->description}}") {
+            document.getElementById("description").innerHTML =  "{{$lesson->description}}"
+            this.innerHTML = "Свернуть"
+        }
+    else {
+        document.getElementById("description").innerHTML =  "{{mb_strimwidth($lesson->description, 0, 120, '...')}}"
+            this.innerHTML = "Ещё"
+    }
+    }
     class BootstrapVideoplayer{
 
 constructor(selector,settingsCustom) {
