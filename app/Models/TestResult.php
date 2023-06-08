@@ -16,4 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 class TestResult extends Model
 {
     use HasFactory;
+    public $table = "tests_results";
+    public $timestamps = false;
+    public $fillable = ["user_id","question_id","answer_id"];
 }

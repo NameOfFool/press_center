@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Questions whereLessonId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Questions whereQuestion($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Questions whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Answers> $answers
+ * @property-read int|null $answers_count
  * @mixin \Eloquent
  */
 class Questions extends Model

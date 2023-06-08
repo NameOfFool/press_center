@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\Answers
@@ -23,9 +24,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Answers whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Answers whereQuestionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Answers whereUpdatedAt($value)
+ * @property-read \App\Models\Questions $question
  * @mixin \Eloquent
  */
 class Answers extends Model
 {
     use HasFactory;
+
+    public function question():BelongsTo{
+        return $this->belongsTo(Questions::class);
+    }
 }

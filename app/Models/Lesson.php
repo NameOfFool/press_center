@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereText($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereVideo($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Questions> $questions
+ * @property-read int|null $questions_count
  * @mixin \Eloquent
  */
 class Lesson extends Model

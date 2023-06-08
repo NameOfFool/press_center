@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use File;
 use Illuminate\Http\Request;
 use App\Models\Lesson;
+use App\Models\TestResult;
+use Auth;
 use Error;
 use Response;
 use Storage;
@@ -40,10 +42,31 @@ class GrammaryController extends Controller
     {
         $lesson = Lesson::find($id);
         $questions = $lesson->questions()->get();
-    //    dd($questions[0]->answers);
-        return view("grammary.test",compact("questions"));
+        return view("grammary.test", compact("questions", "id"));
+    }
+    public function sendAnswers(Request $request)
+    {
+        $lesson = $request->id;
+        foreach ($request->all() as $key => $value) {
+            try
+            {
+                $result = new TestResult();
+                $result->user_id = Auth::user()->id;
+                $result->question_id = $key;
+                $result->answer_id = $value;
+                $result->save();
+            }
+            catch(\Exception $e)
+            {
+
+            }
+        }
+        return redirect(route("grammary"));
     }
 }
+
+
+
 class VideoStream
 {
     private $path = "";
