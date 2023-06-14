@@ -1,7 +1,7 @@
 @extends("layouts.app")
 @section("content")
 @foreach ($lessons as $lesson)
-<div class="container">
+<div class="container my-2">
     <div class="d-flex ">
         <div class="card w-100">
             <div class="card-body">
